@@ -208,9 +208,10 @@
         var name = h3.textContent.replace(/\$15/g, "").trim();
         var key = Object.keys(stock).find(function(k) { return name.indexOf(k) !== -1; });
         if (!key) return;
+        var qty = stock[key];
         var btn = card.querySelector("a.btn");
-        if (stock[key]) {
-          var badge = '<span style="display:inline-block;background:#00ae42;color:#fff;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:8px;">In Stock</span>';
+        if (qty > 0) {
+          var badge = '<span style="display:inline-block;background:#00ae42;color:#fff;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:8px;">' + qty + ' in stock</span>';
           h3.insertAdjacentHTML("beforeend", badge);
         } else {
           var badge = '<span style="display:inline-block;background:#c0392b;color:#fff;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:8px;">Sold Out</span>';
